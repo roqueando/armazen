@@ -25,8 +25,22 @@ endif()
 include(FetchContent) # this things save lives, but it has more options like CPM
 
 # library directory
-add_subdirectory(src)
 
+set(ARMAZEN_BIN_OUTPUT_NAME armazen)
+
+# Armazen will only have one executable for most of things so we will add the executable here
+add_executable(${ARMAZEN_BINARY_NAME} src/main.cpp)
+
+# linking core library to binary
+target_link_libraries(${ARMAZEN_BINARY_NAME} PUBLIC ${ARMAZEN_LIBRARY_NAME})
+
+# adding features from C++ 23
+target_compile_features(${ARMAZEN_BINARY_NAME} PRIVATE cxx_std_23) 
+
+# when compiling set the binary to project name
+set_target_properties(${ARMAZEN_BINARY_NAME} PROPERTIES OUTPUT_NAME armazen)
+
+add_subdirectory(src)
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
   enable_testing()
