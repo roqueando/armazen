@@ -1,0 +1,50 @@
+.env
+.vscode
+/vendor
+main
+node_modules
+docs/.vitepress/dist
+docs/.vitepress/cache
+olu
+# config.json
+*.DS_Store
+
+dist/
+.tool-versions
+data/*
+
+# Compiled Object files
+**/.DS_Store
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+.build/
+build/
+bins
+gens
+libs
+objs
+
+xcode/

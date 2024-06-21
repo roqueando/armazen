@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-set(ARMAZEN_PROJECT_NAME armazen)
+set(ARMAZEN_PROJECT_NAME Armazen)
 set(ARMAZEN_SOURCE_DIR src)
 set(ARMAZEN_SOURCE ${ARMAZEN_SOURCE_DIR}/main.cpp)
 set(CMAKE_CXX_STANDARD 23)
@@ -27,14 +27,8 @@ include(FetchContent) # this things save lives, but it has more options like CPM
 # library directory
 add_subdirectory(src)
 
-# Armazen will only have one executable for most of things so we will add the executable here
-add_executable(${ARMAZEN_BINARY_NAME} src/main.cpp)
 
-# adding features from C++ 23
-target_compile_features(${ARMAZEN_PROJECT_NAME} PRIVATE cxx_std_23) 
-
-# linking with core library
-target_link_libraries(${ARMAZEN_PROJECT_NAME} PUBLIC ${ARMAZEN_LIBRARY_NAME})
-
-# when compiling set the binary to project name
-set_target_properties(${ARMAZEN_BINARY_NAME} PROPERTIES OUTPUT_NAME ${ARMAZEN_PROJECT_NAME})
+if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME AND BUILD_TESTING)
+  enable_testing()
+  add_subdirectory(tests)
+endif()
