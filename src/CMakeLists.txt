@@ -1,7 +1,10 @@
 # adding own library and dependencies
 file(GLOB HEADER_LIST
   CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/**/*.hpp")
-file(GLOB SOURCE_LIST "${PROJECT_SOURCE_DIR}/src/**/*.cpp")
+file(GLOB SOURCE_LIST
+  "${PROJECT_SOURCE_DIR}/src/*.cpp"
+  "${PROJECT_SOURCE_DIR}/src/armazen/drain/*.cpp"
+  )
 
 add_library(${ARMAZEN_LIBRARY_NAME} ${SOURCE_LIST} ${HEADER_LIST})
 target_include_directories(${ARMAZEN_LIBRARY_NAME} PUBLIC ../include)
@@ -21,3 +24,8 @@ FetchContent_MakeAvailable(argparse)
 # linking the dependencies to libarmazen
 target_link_libraries(${ARMAZEN_LIBRARY_NAME} argparse::argparse)
 
+source_group(
+  TREE "${PROJECT_SOURCE_DIR}/include"
+  PREFIX "Header files"
+  FILES ${HEADER_LIST}
+  )
