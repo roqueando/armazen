@@ -1,4 +1,3 @@
-
 # adding own library and dependencies
 file(GLOB HEADER_LIST
   CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/**/*.hpp")
@@ -22,8 +21,3 @@ FetchContent_MakeAvailable(argparse)
 # linking the dependencies to libarmazen
 target_link_libraries(${ARMAZEN_LIBRARY_NAME} argparse::argparse)
 
-source_group(
-  TREE "${PROJECT_SOURCE_DIR}/include"
-  PREFIX "Header Files"
-  FILES ${HEADER_LIST}
-  )
