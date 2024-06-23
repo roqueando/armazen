@@ -1,7 +1,6 @@
 set(TEST_NAME armazen-test)
 file(GLOB TEST_LIST "${PROJECT_SOURCE_DIR}/tests/*.cpp")
 
-message(test_list=${TEST_LIST})
 # add googletest for test framework
 FetchContent_Declare(
   googletest

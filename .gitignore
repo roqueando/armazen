@@ -49,3 +49,4 @@ libs
 objs
 
 xcode/
+release/

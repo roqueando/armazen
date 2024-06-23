@@ -8,11 +8,14 @@ TEST(InsertTest, ShouldInsertNodeInTheTree)
   std::string log{"Temperature (43C) exceeds"};
   tree->add_log(log);
 
-  EXPECT_EQ(1 + 1, 2);
+  EXPECT_EQ(tree->root->children["3"].value().value, "3");
 
+  EXPECT_EQ(tree->root->children["3"]
+      .value()
+      .children["Temperature"]
+      .value()
+      .value, "Temperature");
   /*
-  EXPECT_EQ(tree->root->children[""].value, "Temperature");
-  EXPECT_EQ(tree->root->children[1].value, "*");
   EXPECT_EQ(tree->root->children[2].value, "exceeds");
   */
 }
