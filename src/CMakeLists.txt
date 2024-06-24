@@ -4,6 +4,7 @@ file(GLOB HEADER_LIST
 file(GLOB SOURCE_LIST
   "${PROJECT_SOURCE_DIR}/src/*.cpp"
   "${PROJECT_SOURCE_DIR}/src/armazen/drain/*.cpp"
+  "${PROJECT_SOURCE_DIR}/src/armazen/utils/*.cpp"
   )
 
 add_library(${ARMAZEN_LIBRARY_NAME} ${SOURCE_LIST} ${HEADER_LIST})

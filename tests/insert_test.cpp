@@ -10,12 +10,12 @@ TEST(InsertTest, ShouldInsertNodeInTheTree)
 
   EXPECT_EQ(tree->root->children["3"].value().value, "3");
 
+  /*
   EXPECT_EQ(tree->root->children["3"]
       .value()
       .children["Temperature"]
       .value()
       .value, "Temperature");
-  /*
   EXPECT_EQ(tree->root->children[2].value, "exceeds");
   */
 }

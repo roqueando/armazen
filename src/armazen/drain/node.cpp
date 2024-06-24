@@ -1,5 +1,6 @@
-#include <iostream>
 #include <armazen/drain/node.hpp>
+#include <armazen/utils/tokens.hpp>
+#include <iostream>
 #include <optional>
 #include <vector>
 
@@ -28,8 +29,18 @@ namespace drain
       // TODO: add a log group because this is now a leaf node
       return;
     }
-    std::string node_path;
+    std::string token;
+
+    // if only rests one token
+    if (tokens.size() == 1) {
+      token = tokens[0];
+    } else {
+      token = std::vector<std::string>(tokens.begin(), tokens.end())[0];
+    }
+
+    //tokens = utils::remount_without_symbols(tokens);
   }
+
 
   std::ostream& operator<<(std::ostream& out, Node& data)
   {
