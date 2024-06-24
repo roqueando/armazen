@@ -12,16 +12,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
-        compiler: [g++, clang, msvc]
+        os: [ubuntu-latest, macos-latest]
+        compiler: [g++, clang]
         build_type: [Release]
         include:
           - os: ubuntu-latest
             compiler: g++
           - os: macos-latest
             compiler: clang
-          - os: windows-latest
-            compiler: msvc
         exclude:
           - os: ubuntu-latest
             compiler: clang
@@ -29,12 +27,6 @@ jobs:
             compiler: msvc
           - os: macos-latest
             compiler: g++
-          - os: macos-latest
-            compiler: msvc
-          - os: windows-latest
-            compiler: g++
-          - os: windows-latest
-            compiler: clang
 
 
     steps:
@@ -49,7 +41,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y build-essential
         if [ "${{ matrix.compiler }}" == "g++" ]; then
-          sudo apt-get install -y g++
+          sudo apt-get install -y gcc-14
+          sudo apt-get install -y g++-14
+          sudo apt-get install -y libstdc++-14
         fi
 
     - name: Setup compiler (macOS)
@@ -58,10 +52,6 @@ jobs:
         if [ "${{ matrix.compiler }}" == "clang" ]; then
           brew install llvm
         fi
-
-    - name: Setup compiler (Windows)
-      if: matrix.os == 'windows-latest'
-      uses: microsoft/setup-msbuild@v2 
 
     - name: Create Build directory
       run: mkdir build
