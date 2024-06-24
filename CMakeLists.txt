@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.18)
 set(ARMAZEN_PROJECT_NAME Armazen)
 set(ARMAZEN_SOURCE_DIR src)
 set(ARMAZEN_SOURCE ${ARMAZEN_SOURCE_DIR}/main.cpp)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(ARMAZEN_PROJECT_VERSION 0.1)
 set(ARMAZEN_LIBRARY_NAME armazen)
@@ -15,6 +15,10 @@ project(
   VERSION ${ARMAZEN_PROJECT_VERSION}
   DESCRIPTION "A database for structured logs"
   LANGUAGES CXX)
+
+if (UNIX AND NOT APPLE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std:c++20")
+endif()
 
 if (CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   set(CMAKE_CXX_EXTENSIONS OFF)
@@ -35,7 +39,7 @@ add_executable(${ARMAZEN_BINARY_NAME} src/main.cpp)
 target_link_libraries(${ARMAZEN_BINARY_NAME} PUBLIC ${ARMAZEN_LIBRARY_NAME})
 
 # adding features from C++ 23
-target_compile_features(${ARMAZEN_BINARY_NAME} PRIVATE cxx_std_23) 
+target_compile_features(${ARMAZEN_BINARY_NAME} PRIVATE cxx_std_20) 
 
 # when compiling set the binary to project name
 set_target_properties(${ARMAZEN_BINARY_NAME} PROPERTIES OUTPUT_NAME armazen)

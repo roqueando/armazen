@@ -9,7 +9,7 @@ file(GLOB SOURCE_LIST
 
 add_library(${ARMAZEN_LIBRARY_NAME} ${SOURCE_LIST} ${HEADER_LIST})
 target_include_directories(${ARMAZEN_LIBRARY_NAME} PUBLIC ../include)
-target_compile_features(${ARMAZEN_LIBRARY_NAME} PRIVATE cxx_std_23)
+target_compile_features(${ARMAZEN_LIBRARY_NAME} PRIVATE cxx_std_20)
 
 # Use fetch content here to add dependencies
 
