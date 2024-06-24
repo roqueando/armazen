@@ -17,14 +17,14 @@ jobs:
         build_type: [Release]
         include:
           - os: ubuntu-latest
-            compiler: clang
+            compiler: g++
           - os: macos-latest
             compiler: clang
           - os: windows-latest
             compiler: msvc
         exclude:
           - os: ubuntu-latest
-            compiler: g++
+            compiler: clang
           - os: ubuntu-latest
             compiler: msvc
           - os: macos-latest
@@ -50,8 +50,6 @@ jobs:
         sudo apt-get install -y build-essential
         if [ "${{ matrix.compiler }}" == "g++" ]; then
           sudo apt-get install -y g++
-        elif [ "${{ matrix.compiler }}" == "clang" ]; then
-          sudo apt-get install -y clang
         fi
 
     - name: Setup compiler (macOS)
