@@ -69,7 +69,7 @@ jobs:
       run: mkdir build
 
     - name: Configure CMake
-      run: cmake -S . -B build -DCMAKE_CXX_STANDARD=23
+      run: cmake -S . -B build -DCMAKE_CXX_STANDARD=17
 
     - name: Build
       run: cmake --build build
