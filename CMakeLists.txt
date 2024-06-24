@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.18)
 
 set(ARMAZEN_PROJECT_NAME Armazen)
 set(ARMAZEN_SOURCE_DIR src)

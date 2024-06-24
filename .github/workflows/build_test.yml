@@ -17,13 +17,25 @@ jobs:
         build_type: [Release]
         include:
           - os: ubuntu-latest
-            compiler: g++
-          - os: ubuntu-latest
             compiler: clang
           - os: macos-latest
             compiler: clang
           - os: windows-latest
             compiler: msvc
+        exclude:
+          - os: ubuntu-latest
+            compiler: g++
+          - os: ubuntu-latest
+            compiler: msvc
+          - os: macos-latest
+            compiler: g++
+          - os: macos-latest
+            compiler: msvc
+          - os: windows-latest
+            compiler: g++
+          - os: windows-latest
+            compiler: clang
+
 
     steps:
     - uses: actions/checkout@v4
