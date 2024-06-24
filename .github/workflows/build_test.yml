@@ -43,7 +43,7 @@ jobs:
         if [ "${{ matrix.compiler }}" == "g++" ]; then
           sudo apt-get install -y gcc-10
           sudo apt-get install -y g++-10
-          sudo apt-get install -y libstdc++-10
+          sudo apt-get install -y libstdc++-10-dev
         fi
 
     - name: Setup compiler (macOS)
