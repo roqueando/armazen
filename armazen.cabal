@@ -4,7 +4,7 @@ version:            0.1.0.0
 -- synopsis:
 -- description:
 license:            MIT
-license-file:       LICENSE
+license-file:       LICENSE.md
 author:             Vitor Roque
 maintainer:         vitor.roquep@gmail.com
 -- copyright:
@@ -16,9 +16,13 @@ extra-doc-files:    CHANGELOG.md
 common warnings
     ghc-options: -Wall
 
+common extensions
+  default-extensions:
+    OverloadedStrings
+
 library
-    import:           warnings
-    exposed-modules:  MyLib
+    import:           warnings, extensions
+    exposed-modules:  Data.Log.Parser
     -- other-modules:
     -- other-extensions:
     build-depends:    base ^>=4.17.2.1
@@ -42,9 +46,11 @@ test-suite armazen-test
     default-language: Haskell2010
     -- other-modules:
     -- other-extensions:
+    other-modules:  Test.Data.Log.Parser
     type:             exitcode-stdio-1.0
     hs-source-dirs:   test
     main-is:          Main.hs
     build-depends:
         base ^>=4.17.2.1,
-        armazen
+        armazen,
+        hspec
