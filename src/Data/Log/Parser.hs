@@ -1,8 +1,9 @@
 module Data.Log.Parser where
 
-data Layer a = Root
-             | Length a
-             | Token a
+import Data.Log.Types (Layer (..))
 
-split :: String -> [String]
-split e = words e
+lengthLayer :: String -> Layer
+lengthLayer e = Length (calculatedLength e)
+  where
+    calculatedLength = length . words
+
